@@ -4,7 +4,7 @@ import { Image } from 'react-bootstrap'
 import "../styles/DogList.css";
 import Table from 'react-bootstrap/Table';
 
-function Vote() {
+function VoteCopy() {
     // const [page, setPage] = useState(1);
     const [commitHistory, setCommitHistory] = useState([]);
     // const [isLoading, setIsLoading] = useState(false);
@@ -53,19 +53,39 @@ function Vote() {
             <h1> Items </h1>
 
             <Table striped bordered hover>
-                {/* <thead>
+                <thead>
                     <tr>
                         <th>Item</th>
                     </tr>
-                </thead> */}
-                <tbody> 
-                    <tr>
+                </thead>
+                <tbody>
                     {commitHistory.map((c, index) => (
-                        <td>
-                            {/* {index} */}
-                        <br /> {c.breed} <br /> <Image id="dogImage" className='dogListImage' src={c.imageUri} /></td>
+                        <div key={index}>
+ {/* //             <tr key={id}>
+    //                 <td>{id}</td>
+    //                 <td>{breed}</td>
+    //                 <td>{imageUri}</td>
+    //                 <td>
+    //                     <Link className="edit-link" to={"/dogput/" + id}>
+    //                         Edit
+    //                     </Link>
+    //                 </td>
+    //                 <td>
+    //                     <button className="btn btn-danger" onClick={() => { if (window.confirm('Delete the item?')) { this.handleDelete(id) }; }}>Delete</button>
+    //                 </td>
+    //             </tr> */}
+                            {/* <div> */}
+                            <h2 style={{ textDecoration: "Underline" }}>
+                                {c.breed}
+                            </h2>
+                            <Image id="dogImage" className='dogListImage' src={c.imageUri} />
+                            {/* <img id="dogImage2" src={c.imageUri} alt="dogImage2" /> */}
+                            {/* <p>{c.imageUri}</p> */}
+                            {/* </div>
+                    <hr /> */}
+
+                        </div>
                     ))}
-                    </tr>
                 </tbody>
             </Table>
 
@@ -76,4 +96,4 @@ function Vote() {
 
 //const rootElement = document.getElementById("root");
 // export default ReactDOM.render(<Vote />, rootElement);
-export default Vote;
+export default VoteCopy;

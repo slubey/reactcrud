@@ -1,28 +1,31 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import Menu from '../src/Components/Menu'
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link
+// } from "react-router-dom";
+// import Menu from '../src/Components/Menu'
 import './App.css';
-import Vote from '../src/Components/Vote';
+// import Vote from '../src/Components/Vote';
 // import DogList from '../src/Components/DogList';
-import DogPost from '../src/Components/DogPost';
-import DogListClassComponent from './Components/DogListClassComponent';
-import DogPut from './Components/DogPut';
+// import DogPost from '../src/Components/DogPost';
+// import DogListClassComponent from './Components/DogListClassComponent';
+// import DogPut from './Components/DogPut';
+import Navbar from './Navbar'
+import Routes from './Routes'
 //import { red } from '@material-ui/core/colors';
 
 function App() {
   return (
     <div className="App">
-      <Menu />
+      <Navbar />
+      <Routes />
       <header className="App-header">
         {/* <Vote /> */}
         {/* <DogPost /> */}
 
-
+{/* 
         <Router>
           <div>
             <nav>
@@ -54,14 +57,14 @@ function App() {
               </Route>
               {/* <Route path="/dogput:id">
                 <DogPut />
-              </Route> */}
+              </Route> }
               <Route path="/dogput/:id" component={DogPut} />
               <Route path="/">
                 <Vote />
               </Route>
             </Switch>
           </div>
-        </Router>
+        </Router> */}
       </header>
     </div>
   );

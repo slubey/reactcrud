@@ -11,20 +11,23 @@ export class DogListClassComponent extends Component {
             dogs: []
         };
 
-        // this.handleBlur = this.handleBlur.bind(this)
-        // this.handleDelete = this.handleDelete.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
+        this.getList = this.getList.bind(this)
     }
 
-    componentDidMount() {
+    getList() {
         axios.get('https://localhost:44382/api/dogsapi/')
-            .then(res => {
-                this.setState({
-                    dogs: res.data
-                });
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+        .then(res => {
+            this.setState({
+                dogs: res.data
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+    componentDidMount() {
+       this.getList();
     }
 
     renderTableData() {
@@ -40,20 +43,28 @@ export class DogListClassComponent extends Component {
                             Edit
                         </Link>
                     </td>
-                    <td>Delete</td>
+                    <td>
+                        <button className="btn btn-danger" onClick={() => { if (window.confirm('Delete the item?')) { this.handleDelete(id) }; }}>Delete</button>
+                    </td>
                 </tr>
             )
         })
     }
 
-    handleDelete = (e) => {
-        e.preventDefault();
+    handleDelete = (id) => {
+        axios.delete('https://localhost:44382/api/dogsapi/' + id)
+            .then(res => {
+                this.getList();
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     render() {
         return (
             <div className="table-wrapper">
-                <p>Meals</p>
+                <p>Items List</p>
                 <Table striped bordered hover>
                     <thead>
                         <tr>

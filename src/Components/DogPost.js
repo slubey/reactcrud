@@ -6,8 +6,8 @@ export class DogPost extends Component {
         super()
     
         this.state = {
-            Breed: "123",
-            ImageUri: ""
+            Breed: '',
+            ImageUri: ' '
         }
     
        // this.handleBlur = this.handleBlur.bind(this)
@@ -15,15 +15,14 @@ export class DogPost extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
         // this.componentDidMount = this.componentDidMount.bind(this)
       }
-      componentDidMount() {
-        // this.getData();
-         console.log("componentDidMount  " + this.state.Breed);
-         this.setState({
-            Breed: "value",
-            ImageUri: "ImageUri"
-        });
-        console.log("componentDidMount  " + this.state.Breed);
-      }
+    //   componentDidMount() {
+    //      // console.log("componentDidMount  " + this.state.Breed);
+    //      this.setState({
+    //         Breed: "value",
+    //         ImageUri: "ImageUri"
+    //     });
+    //     // console.log("componentDidMount  " + this.state.Breed);
+    //   }
     // static defaultProps = {
     //     value: ''
     // };
@@ -57,32 +56,32 @@ export class DogPost extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log('current state:  ' + this.state.Breed + "  " + this.state.ImageUri);
-        // if(this.state.Breed.length === 0 || this.state.ImageUri.length === 0)
-        // // TODO SL add validation message
-        // return;
+        // console.log('current state:  ' + this.state.Breed + "  " + this.state.ImageUri);
+        if(this.state.Breed.length === 0 || this.state.ImageUri.length === 0)
+        // TODO SL add validation message
+        return;
 
         // console.log('submitting form. ');
         // e.preventDefault();
-        // const obj = {
-        //     Breed: this.state.Breed,
-        //     ImageUri: this.state.ImageUri
-        // };
+        const obj = {
+            Breed: this.state.Breed,
+            ImageUri: this.state.ImageUri
+        };
 
         // console.log('submitting obj. ' + obj);
-        // axios.post('https://localhost:44382/api/dogsapi/', obj)
-        //     .then(res => console.log(res.data));
+        axios.post('https://localhost:44382/api/dogsapi/', obj)
+            .then(res => console.log(res.data));
 
-        // this.setState({
-        //     Breed: '',
-        //     ImageUri: ''
-        // });
+        this.setState({
+            Breed: '',
+            ImageUri: ''
+        });
     }
 
     render() {
         return (
             <div>
-                <h2>Dog Post</h2>
+                <h2>Create New Item</h2>
                 <form action="/myform" method="post" onSubmit={this.handleSubmit } noValidate>
                     {
                         <div>
@@ -120,7 +119,7 @@ export class DogPost extends Component {
                             </select>
                         </p> */
                     }
-                    <input type="submit" value="Submit Form" />
+                    <input type="submit" value="Submit" />
                 </form>
             </div>
         );
